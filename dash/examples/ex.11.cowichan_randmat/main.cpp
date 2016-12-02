@@ -2,7 +2,6 @@
 #include <iostream>
 
 using std::cout;
-using std::cerr;
 using std::endl;
 
 
@@ -43,19 +42,20 @@ void randmat(dash::NArray<T, 2>& mat, uint seed)
 int main(int argc, char* argv[])
 {
   typedef unsigned int uint;
+  
   dash::init(&argc,&argv);
   
-  auto myid        = dash::myid();
+  auto myid = dash::myid();
   
   if(argc != 4){
-    if (0==myid) cout << "3 Parameters expected!" << endl << "Usage:randmat nrows ncols seed" << endl;
+    if (0==myid) cout << "3 Parameters expected!" << endl << "Usage: cowichan_randmat nrows ncols seed" << endl;
     dash::finalize();
     return 0;
   }
   
-  size_t nrows   = static_cast<size_t>(atoi(argv[1]));
-  size_t ncols   = static_cast<size_t>(atoi(argv[2]));
-  uint s = static_cast<size_t>(atoi(argv[3]));
+  uint nrows = static_cast<uint>(atoi(argv[1]));
+  uint ncols = static_cast<uint>(atoi(argv[2]));
+  uint s     = static_cast<uint>(atoi(argv[3]));
   
   dash::NArray<unsigned char, 2> mat(nrows, ncols);
 
@@ -66,53 +66,6 @@ int main(int argc, char* argv[])
 
   dash::finalize();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
